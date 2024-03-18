@@ -9,9 +9,9 @@ header{
     left: 0;
     width: 100%;
     display: grid;
-    grid-template-columns: 1fr 2fr;
+    grid-template-columns: 1fr 3fr;
     align-items: center;
-    transition: 1s;
+    transition: 0.8s;
     padding: 40px 100px;
 }
 
@@ -27,14 +27,45 @@ header ul{
     position: relative;
     width: fit-content;
     text-wrap: nowrap;
+    justify-items: center;
+    grid-auto-columns: max-content;
 }
 
 header ul li{
+    border: 5px solid black;
     position: relative;
     list-style: none;
     cursor: pointer;
-    width: fit-content;
+    transition: color 0.4s linear;
+    /*width: fit-content;*/
 }
+
+header ul li::after{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgb(69, 6, 6);
+    font-style: italic; 
+    z-index: -1;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.4s ease-in;
+}
+
+header ul li:hover::after{
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+header ul li:hover{
+    color: aliceblue;
+    transition: 0.4s ease-in;
+    transform-origin: left;
+}
+
 
 header a{
     color: black;
@@ -43,7 +74,7 @@ header a{
     text-decoration: none;
     letter-spacing: 2px;
     font-weight: 500px;
-    transition: 1s;
+    transition: 0.2s;
 }
 
 .banner-img{
@@ -53,7 +84,7 @@ header a{
 }
 
 .banner{
-    position: relative;
+    position: sticky;
     width: 100%;
     height: 100vh;
     background: url("./images/david-marcu-78A265wPiO4-unsplash.jpg");
